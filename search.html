@@ -1,0 +1,151 @@
+<!--
+  copyright (c) 2009 Google inc.
+
+  You are free to copy and use this sample.
+  License can be found here: http://code.google.com/apis/ajaxsearch/faq/#license
+  
+  Kacey Coughlin
+  Roodle Search Engine
+-->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>ROODLE</title>
+    <style type="text/css">
+
+      body *, table *,
+      body {
+        font-family: "trebuchet ms", verdana, sans-serif;
+        font-size: 13px;
+      }
+
+      #search_control { margin: 20px; }
+      
+      #title {
+      	margin: 0 auto;
+      	position: absolute;
+      	top: 0;
+      	z-index: 100;
+      	width: 100%;
+      	height: 200px;
+      	padding: 3px;
+      	text-align: center;
+      	background-color: #ffffff;
+      }
+      
+      #search {
+      	margin: 0 auto;
+      	margin-top: 150px;
+      	width: 100%;
+      }
+      
+      #search input[type=text] {
+      	margin: 0 auto;
+      	border-color: #333333;
+      	width: 300px;
+      	height: 30px;
+      	display: block;
+      	padding: 2px;
+      	-moz-border-radius: 3px;
+      	-webkit-border-radius: 3px;
+      }
+      
+      #search input[type=button], input[type=reset] {
+      	width: 60px;
+      	height: 25px;
+      	background-color: #ffffff;
+      	border-color: #333333;
+      	-moz-border-radius: 3px;
+      	-webkit-border-radius: 3px;
+      }
+      
+    </style>
+
+    <!-- Replace with http://www.google.com/jsapi -->
+    <script src="http://www.google.com/jsapi?key=ABQIAAAARMDkdNKAyO_Jhlq1-QsKfxSpW8hn5bEzQGkM9ZY1EcTTlChRcRRvJC61uoSS1WQBtmXcLDPPODTpLA" type="text/javascript"></script>
+
+    <script language="Javascript" type="text/javascript">//<![CDATA[
+    google.load('search', '1');
+    
+    function search() {
+    	//Get search term
+    	var term = document.getElementById("searchBox").value;
+    
+      // create a search control
+      var searchControl = new google.search.SearchControl();
+    
+      // web search, open, alternate root
+      var options = new google.search.SearcherOptions();
+      options.setExpandMode(google.search.SearchControl.EXPAND_MODE_OPEN);
+      options.setRoot(document.getElementById("somewhere_else"));
+      searchControl.addSearcher(new google.search.WebSearch(), options);
+    
+    
+      // tell the searcher to draw itself and tell it where to attach
+      searchControl.draw(document.getElementById("search_control"));
+      
+      //Create string array
+      var sArray = [];
+      sArray[0] = "sexy sex";
+      sArray[1] = "boobs and butt";
+      sArray[2] = "poops in pants";
+      sArray[3] = "in a toilet";
+      sArray[4] = "and lolcats";
+      
+      //Create random number to pick array index
+      var randomNumber = function (min,max,digits) {
+      	digits = isNaN(digits) ? 0 : parseInt(digits);
+      	
+      	//Make sure number is between 0 and 4
+      	if (digits < 0) {
+      		digits = 0;
+      	} else if (digits > 4) {
+      		digits = 4;
+      	}
+      	if (digits == 0) {
+      		return Math.floor(Math.random()*(max-min+1))+min;
+      	} else {
+      		var rand = Math.random() + (max-min)+min;
+      		return parseFloat(rand.toFixed(digits));
+      	}
+      }
+      
+      var rand = randomNumber(0,4);
+    
+      // execute search
+      searchControl.execute(term+" "+sArray[rand]);
+    }
+    google.setOnLoadCallback(OnLoad);
+    //]]>
+    </script>
+  </head>
+
+  <body>
+  
+  <div id="title" align="center">
+  	<img src="roodle.jpg" />
+  </div>
+    <table width="100%">
+      <tr>
+        <td valign="top" align="center">
+          <div id="search_control">Loading...</div>
+        </td>
+      </tr><tr>
+      	<td valign="top" align="center">
+      	<div id="search">
+      		<input type="text" size="40" id="searchBox" onkeydown="if((13==event.keycode)||(13==event.which)){search();}" /><br>
+      		<input type="button" value="Search" onclick="search();" />
+      		<input type="reset" value="Reset" />
+      	</div>
+      	</td>
+     </tr><tr>
+        <td valign="top">
+          <div id="somewhere_else">
+          	<font color="white">Loading</font>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>​
