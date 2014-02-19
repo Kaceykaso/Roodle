@@ -87,11 +87,19 @@
       
       //Create string array
       var sArray = [];
+      /* Original 'rude' words
       sArray[0] = "sexy sex";
       sArray[1] = "boobs and butt";
       sArray[2] = "poops in pants";
       sArray[3] = "in a toilet";
-      sArray[4] = "and lolcats";
+      sArray[4] = "and lolcats";*/
+      // New 'rude' phrases
+      sArray[0] = "with full frontal nudity";
+      sArray[1] = "and a big ass";
+      sArray[2] = "with huge boobs";
+      sArray[3] = "thats drowned in a toilet";
+      sArray[4] = "and a penis";
+      sArray[5] = "thats covered in poop"
       
       //Create random number to pick array index
       var randomNumber = function (min,max,digits) {
@@ -100,8 +108,8 @@
       	//Make sure number is between 0 and 4
       	if (digits < 0) {
       		digits = 0;
-      	} else if (digits > 4) {
-      		digits = 4;
+      	} else if (digits > 5) {
+      		digits = 5;
       	}
       	if (digits == 0) {
       		return Math.floor(Math.random()*(max-min+1))+min;
@@ -111,7 +119,7 @@
       	}
       }
       
-      var rand = randomNumber(0,4);
+      var rand = randomNumber(0,5);
     
       // execute search
       searchControl.execute(term+" "+sArray[rand]);
