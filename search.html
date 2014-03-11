@@ -92,6 +92,11 @@
       sArray[2] = "poops in pants";
       sArray[3] = "in a toilet";
       sArray[4] = "and lolcats";
+      sArray[5] = "with long butt hairs";
+      sArray[6] = "to have sex with";
+      sArray[7] = "for pooping in";
+      sArray[8] = "when I pee";
+      sArray[9] = "to shave back hair";
       
       //Create random number to pick array index
       var randomNumber = function (min,max,digits) {
@@ -100,8 +105,8 @@
       	//Make sure number is between 0 and 4
       	if (digits < 0) {
       		digits = 0;
-      	} else if (digits > 4) {
-      		digits = 4;
+      	} else if (digits > 10) {
+      		digits = 10;
       	}
       	if (digits == 0) {
       		return Math.floor(Math.random()*(max-min+1))+min;
@@ -111,7 +116,7 @@
       	}
       }
       
-      var rand = randomNumber(0,4);
+      var rand = randomNumber(0,10);
     
       // execute search
       searchControl.execute(term+" "+sArray[rand]);
